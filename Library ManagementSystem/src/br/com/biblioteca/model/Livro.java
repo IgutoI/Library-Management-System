@@ -1,5 +1,7 @@
 package br.com.biblioteca.model;
 
+import br.com.biblioteca.exception.LivroIndisponivelException;
+
 public class Livro {
 
     private Long id;
@@ -37,6 +39,13 @@ public class Livro {
     }
 
     public void emprestar() {
+    
+        if (!disponivel) {
+            throw new LivroIndisponivelException(
+                    "O livro \"" + titulo + "\" já está emprestado."
+            );
+        }
+    
         disponivel = false;
     }
 
