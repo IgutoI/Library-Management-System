@@ -3,6 +3,7 @@ package br.com.biblioteca;
 import br.com.biblioteca.model.Emprestimo;
 import br.com.biblioteca.model.Livro;
 import br.com.biblioteca.model.Usuario;
+import br.com.biblioteca.exception.LivroIndisponivelException;
 
 public class Main {
 
@@ -21,11 +22,29 @@ public class Main {
                 "augusto@email.com"
         );
 
+
+
         Emprestimo emprestimo = new Emprestimo(
                 1L,
                 livro,
-                usuario
+                usuario);
+
+        try {
+
+         Emprestimo segundoEmprestimo = new Emprestimo(
+            2L,
+            livro,
+            usuario
         );
+
+        } catch (LivroIndisponivelException e) {
+
+                System.out.println("Não foi possível realizar o empréstimo.");
+                 System.out.println("Motivo: " + e.getMessage());
+        }
+
+
+        
 
         System.out.println("===== EMPRÉSTIMO =====");
 
