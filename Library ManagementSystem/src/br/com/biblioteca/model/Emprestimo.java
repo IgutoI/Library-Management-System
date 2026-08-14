@@ -12,6 +12,8 @@ public class Emprestimo{
     
 
     public Emprestimo(long id, Livro livro, Usuario usuario) {
+        
+        livro.emprestar();
         this.id = id;
         this.livro = livro;
         this.usuario = usuario;
